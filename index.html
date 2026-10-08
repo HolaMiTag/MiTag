@@ -2,12 +2,20 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>MiTag Test</title>
+  <title>MiTag</title>
 </head>
 
 <body>
 
-<h1>PRUEBA MITAG</h1>
+<h1 id="resultado">Cargando...</h1>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const key = params.get("k");
+
+document.getElementById("resultado").innerText =
+  "Clave recibida: " + key;
+</script>
 
 </body>
 </html>
