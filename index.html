@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MiTag</title>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const key = params.get("k");
+    const key = new URLSearchParams(window.location.search).get("k");
 
     if (key) {
-      const destino =
-        "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k="
-        + encodeURIComponent(key);
-
-      window.location.replace(destino);
+      window.location.replace(
+        "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k=" +
+        encodeURIComponent(key)
+      );
     }
   </script>
-
 </head>
 
 <body>
