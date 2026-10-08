@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MiTag</title>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("k");
+
+    if (key) {
+      const destino =
+        "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k="
+        + encodeURIComponent(key);
+
+      window.location.replace(destino);
+    }
+  </script>
+
 </head>
 
 <body>
-
-<h1>Redirigiendo...</h1>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-const key = params.get("k");
-
-const destino = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k=" + encodeURIComponent(key);
-
-window.location.href = destino;
-
-</script>
-
 </body>
 </html>
