@@ -1,31 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
-  <meta charset="utf-8">
-  <title></title>
-  
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiTag</title>
 </head>
+
 <body>
-  <script>
-    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k=MTG001";
 
-    var url = document.location.href;
-    var k = url.substr(url.lastIndexOf("k=")+2);
+<script>
 
-    if(k){
-      fetch(AS_URL_BASE+'?k='+k)
-      .then(r => r.text())
-      .then((r) => {
-        console.log(r);
-        //document.write(r);
-        if(r){
-          document.location.replace(r);
+const params = new URLSearchParams(window.location.search);
+const key = params.get("k");
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec";
+
+if (key) {
+
+  fetch(scriptURL + "?k=" + encodeURIComponent(key))
+    .then(response => response.text())
+    .then(url => {
+
+      url = url.trim();
+
+      if (url) {
+
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+          url = "https://" + url;
         }
-      })
-      .catch(err => console.log(err))
-    }
 
-  </script>
-  
+        window.location.replace(url);
+
+      } else {
+
+        document.body.innerHTML = "<h2>MiTag no encontrado</h2>";
+
+      }
+
+    })
+    .catch(error => {
+
+      document.body.innerHTML = "<h2>Error de conexión</h2>";
+
+      console.error(error);
+
+    });
+
+} else {
+
+  document.body.innerHTML = "<h2>MiTag</h2>";
+
+}
+
+</script>
+
 </body>
 </html>
