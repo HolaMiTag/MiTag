@@ -3,19 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script>
-    const key = new URLSearchParams(window.location.search).get("k");
-
-    if (key) {
-      window.location.replace(
-        "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k=MTG001" +
-        encodeURIComponent(key)
-      );
-    }
-  </script>
+  <title>MiTag</title>
 </head>
 
 <body>
+
+<script>
+
+const key = new URLSearchParams(window.location.search).get("k");
+
+function recibirRespuesta(data) {
+
+  if (data && data.url) {
+    window.location.replace(data.url);
+  } else {
+    document.body.innerHTML = "<h2>MiTag no encontrado</h2>";
+  }
+
+}
+
+if (key) {
+
+  const script = document.createElement("script");
+
+  script.src =
+    "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec"
+    + "?k=" + encodeURIComponent(key)
+    + "&callback=recibirRespuesta";
+
+  document.body.appendChild(script);
+
+} else {
+
+  document.body.innerHTML = "<h2>Falta el código MiTag</h2>";
+
+}
+
+</script>
+
 </body>
 </html>
