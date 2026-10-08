@@ -2,34 +2,21 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>MiTag Test</title>
+  <title>MiTag</title>
 </head>
 
 <body>
 
-<h1 id="resultado">Consultando...</h1>
+<h1>Redirigiendo...</h1>
 
 <script>
 
 const params = new URLSearchParams(window.location.search);
 const key = params.get("k");
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec";
+const destino = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec?k=" + encodeURIComponent(key);
 
-fetch(scriptURL + "?k=" + encodeURIComponent(key))
-  .then(response => response.text())
-  .then(data => {
-
-    document.getElementById("resultado").innerText =
-      "RESPUESTA: [" + data + "]";
-
-  })
-  .catch(error => {
-
-    document.getElementById("resultado").innerText =
-      "ERROR: " + error;
-
-  });
+window.location.href = destino;
 
 </script>
 
