@@ -1,57 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MiTag</title>
+  <title>MiTag Test</title>
 </head>
 
 <body>
 
-<script>
+<h1 id="resultado">Cargando...</h1>
 
+<script>
 const params = new URLSearchParams(window.location.search);
 const key = params.get("k");
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec";
-
-if (key) {
-
-  fetch(scriptURL + "?k=" + encodeURIComponent(key))
-    .then(response => response.text())
-    .then(url => {
-
-      url = url.trim();
-
-      if (url) {
-
-        if (!url.startsWith("http://") && !url.startsWith("https://")) {
-          url = "https://" + url;
-        }
-
-        window.location.replace(url);
-
-      } else {
-
-        document.body.innerHTML = "<h2>MiTag no encontrado</h2>";
-
-      }
-
-    })
-    .catch(error => {
-
-      document.body.innerHTML = "<h2>Error de conexión</h2>";
-
-      console.error(error);
-
-    });
-
-} else {
-
-  document.body.innerHTML = "<h2>MiTag</h2>";
-
-}
-
+document.getElementById("resultado").innerText =
+  "La clave recibida es: " + key;
 </script>
 
 </body>
