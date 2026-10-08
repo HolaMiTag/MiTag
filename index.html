@@ -2,36 +2,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>MiTag Test</title>
+  <title>MiTag Test 2</title>
 </head>
 
 <body>
 
-<h1 id="resultado">Consultando MiTag...</h1>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-const key = params.get("k");
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbzxdTUF7dahV3aBpjKRKmLQE-sCAAcoMc-Lw68WZC-QmHrzhxmnuZVW8frflb5gQsOS/exec";
-
-fetch(scriptURL + "?k=" + encodeURIComponent(key))
-  .then(response => response.text())
-  .then(data => {
-
-    document.getElementById("resultado").innerText =
-      "Respuesta de Apps Script: " + data;
-
-  })
-  .catch(error => {
-
-    document.getElementById("resultado").innerText =
-      "ERROR: " + error;
-
-  });
-
-</script>
+<h1>PRUEBA 2 - GITHUB ACTUALIZADO</h1>
 
 </body>
 </html>
